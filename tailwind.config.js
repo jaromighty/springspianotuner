@@ -14,6 +14,9 @@ module.exports = {
             fontFamily: {
                 sans: ['DM Sans', ...defaultTheme.fontFamily.sans],
             },
+            maxWidth: {
+                '8xl': '88rem',
+            },
         },
     },
 
