@@ -1,4 +1,6 @@
 <script setup>
+import PrimaryButtonLarge from '@/Components/PrimaryButtonLarge.vue';
+
 defineProps({
     open: Boolean
 });
@@ -24,8 +26,10 @@ defineEmits(['open']);
                 <div>
                     <h1 class="text-4xl font-bold tracking-tight text-black sm:text-5xl md:text-6xl">Springs Piano Tuner</h1>
                     <p class="mt-3 text-base text-gray-600 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua ad ad non deserunt sunt.</p>
-                    <div class="mt-10">
-                        <button @click="$emit('open')" class="inline-flex items-center justify-center rounded-md shadow border border-transparent bg-blue-600 px-8 py-3 text-base font-medium uppercase text-white hover:bg-blue-700 md:py-4 md:px-10 md:text-lg">Schedule Tuning</button>
+                    <div class="mt-8">
+                        <PrimaryButtonLarge @click="$emit('open')">
+                            Schedule Tuning
+                        </PrimaryButtonLarge>
                     </div>
                 </div>
             </div>

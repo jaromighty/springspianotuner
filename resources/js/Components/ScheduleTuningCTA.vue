@@ -1,4 +1,6 @@
 <script setup>
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+
 defineProps({
     open: Boolean
 });
@@ -14,7 +16,9 @@ defineEmits(['open']);
             </h2>
             <div class="mt-8 flex justify-center">
                 <div class="inline-flex rounded-md shadow">
-                    <button @click="$emit('open')" class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-3 text-base font-medium uppercase text-white hover:bg-blue-700">Schedule Tuning</button>
+                    <PrimaryButton @click="$emit('open')">
+                        Schedule Tuning
+                    </PrimaryButton>
                 </div>
             </div>
         </div>

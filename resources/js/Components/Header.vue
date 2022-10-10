@@ -1,6 +1,7 @@
 <script setup>
 import { inject } from 'vue';
 import { Link } from '@inertiajs/inertia-vue3';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 defineProps({
     open: Boolean
@@ -42,7 +43,9 @@ const navigation = [
                         </nav>
 
                         <div class="flex items-center justify-end">
-                            <button @click="$emit('open')" class="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-6 py-3 text-base uppercase text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Schedule Tuning</button>
+                            <PrimaryButton @click="$emit('open')">
+                                Schedule Tuning
+                            </PrimaryButton>
                         </div>
                     </div>
                 </div>
