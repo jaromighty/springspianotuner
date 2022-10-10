@@ -10,7 +10,7 @@ defineEmits(['open']);
 
 const navigation = [
   { name: 'About', href: '#about' },
-  { name: 'Pricing', href: '#' },
+  { name: 'FAQs', href: '#faqs' },
   { name: 'Docs', href: '#' },
   { name: 'Company', href: '#' },
 ];

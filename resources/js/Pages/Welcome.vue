@@ -6,6 +6,7 @@ import Hero from '@/Components/Hero.vue';
 import MeetJarom from '@/Components/MeetJarom.vue';
 import ScheduleTuningCTA from '@/Components/ScheduleTuningCTA.vue';
 import ScheduleModal from '@/Components/ScheduleModal.vue';
+import FAQs from '@/Components/FAQs.vue';
 import Footer from '@/Components/Footer.vue';
 
 const open = ref(false);
@@ -25,6 +26,7 @@ const closeModal = () => {
         <Hero :open="open" @open="openModal" />
         <MeetJarom />
         <ScheduleTuningCTA :open="open" @open="openModal" />
+        <FAQs />
         <Footer />
     </main>
 
