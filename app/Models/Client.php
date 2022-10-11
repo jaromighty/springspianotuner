@@ -27,4 +27,9 @@ class Client extends Model
     {
         return $this->hasMany(Tuning::class);
     }
+
+    public function addresses(): HasMany
+    {
+        return $this->hasMany(Address::class);
+    }
 }
