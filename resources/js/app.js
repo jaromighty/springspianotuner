@@ -7,6 +7,11 @@ import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import dayjs from 'dayjs';
+import weekday from 'dayjs/plugin/weekday';
+import weekOfYear from 'dayjs/plugin/weekOfYear';
+
+dayjs.extend(weekday);
+dayjs.extend(weekOfYear);
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
