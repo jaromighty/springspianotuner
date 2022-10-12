@@ -4,7 +4,7 @@ import CalendarDays from '@/Components/Calendar/CalendarDays.vue';
 import CalendarHeader from '@/Components/Calendar/CalendarHeader.vue';
 import CalendarGrid from '@/Components/Calendar/CalendarGrid.vue';
 
-defineProps(['modelValue']);
+const props = defineProps(['modelValue','today']);
 const emit = defineEmits(['update:modelValue']);
 
 const dayjs = inject('dayjs');
@@ -14,7 +14,7 @@ const INITIAL_YEAR = ref(dayjs().format("YYYY"));
 const INITIAL_MONTH = ref(dayjs().format("M"));
 
 let selectedMonth = ref(dayjs(new Date(INITIAL_YEAR.value, INITIAL_MONTH.value - 1, 1)));
-let selectedDay = ref(TODAY);
+let selectedDay = ref(props.today || TODAY);
 let currentMonthDays = ref([]);
 let previousMonthDays = ref([]);
 let nextMonthDays = ref([]);

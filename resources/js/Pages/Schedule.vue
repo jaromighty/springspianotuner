@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { inject, ref } from 'vue';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import { CalendarIcon, EllipsisHorizontalIcon, MapPinIcon } from '@heroicons/vue/20/solid';
 import { Head } from '@inertiajs/inertia-vue3';
@@ -7,7 +7,10 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Calendar from '@/Components/Calendar/Calendar.vue';
 import NewTuningModal from '@/Components/Modals/NewTuningModal.vue';
 
+const dayjs = inject('dayjs');
+
 const open = ref(false);
+const today = ref(dayjs().format("YYYY-MM-DD"));
 
 const meetings = [
   {
@@ -39,7 +42,7 @@ const meetings = [
                     <h2 class="text-lg font-semibold text-gray-900">Upcoming tunings</h2>
                     <div class="lg:grid lg:grid-cols-12 lg:gap-x-16">
                     <div class="mt-10 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 lg:mt-9 xl:col-start-9">
-                        <Calendar />
+                        <Calendar :today="today" />
                         <button type="button" @click="open = true" class="mt-8 w-full rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-40">Add tuning</button>
                     </div>
                     <ol class="mt-4 divide-y divide-gray-100 text-sm leading-6 lg:col-span-7 xl:col-span-8">

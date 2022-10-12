@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { inject, ref } from 'vue';
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue';
 import { CheckIcon } from '@heroicons/vue/24/outline';
 import { useForm } from '@inertiajs/inertia-vue3';
@@ -9,15 +9,17 @@ import SimpleSelect from '@/Components/Forms/SimpleSelect.vue';
 defineProps(['open']);
 defineEmits(['close']);
 
+const dayjs = inject('dayjs');
+
+const today = ref(dayjs().format("YYYY-MM-DD"));
+
 const times = [
-    { label: '5:00 PM', time: '17:00' },
-    { label: '6:00 PM', time: '18:00' },
+    { label: '5:00 PM', time: '17:00:00' },
+    { label: '6:00 PM', time: '18:00:00' },
 ];
 
-// const selected = ref(times[0]);
-
 const form = useForm({
-    date: "",
+    date: today.value,
     time: times[0]
 });
 
@@ -47,7 +49,7 @@ const submit = () => {
                                                 <SimpleSelect class="mt-1" :items="times" v-model="form.time" />
                                             </div>
                                             <div class="text-center col-span-6 sm:col-span-3">
-                                                <Calendar v-model="form.date" />
+                                                <Calendar v-model="form.date" :today="today" />
                                             </div>
                                         </div>
                                     </form>
