@@ -4,6 +4,9 @@ import CalendarDays from '@/Components/Calendar/CalendarDays.vue';
 import CalendarHeader from '@/Components/Calendar/CalendarHeader.vue';
 import CalendarGrid from '@/Components/Calendar/CalendarGrid.vue';
 
+defineProps(['modelValue']);
+const emit = defineEmits(['update:modelValue']);
+
 const dayjs = inject('dayjs');
 
 const TODAY = dayjs().format("YYYY-MM-DD");
@@ -20,6 +23,7 @@ let currentMonthDisplay = ref("");
 
 const setSelectedDay = (date) => {
     selectedDay.value = date;
+    emit('update:modelValue', date);
 }
 
 watch(selectedDay, (newDate, oldDate) => {
@@ -27,6 +31,7 @@ watch(selectedDay, (newDate, oldDate) => {
         days.value.find(day => day.date === oldDate).isSelected = false;
     }
     days.value.find(day => day.date === newDate).isSelected = true;
+
 });
 
 onMounted(() => {
