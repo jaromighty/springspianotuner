@@ -10,13 +10,23 @@ use Illuminate\Http\Request;
 class TuningController extends Controller
 {
     /**
+     * Instantiate a new controller instance.
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth','verified'])->except('update');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return inertia('Schedule', [
+            'tunings' => Tuning::orderBy('scheduled_at', 'desc')->get()
+        ]);
     }
 
     /**

@@ -7,6 +7,10 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Calendar from '@/Components/Calendar/Calendar.vue';
 import NewTuningModal from '@/Components/Modals/NewTuningModal.vue';
 
+defineProps({
+    tunings: Array,
+});
+
 const dayjs = inject('dayjs');
 
 const open = ref(false);
