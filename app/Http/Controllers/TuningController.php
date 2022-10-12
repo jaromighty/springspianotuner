@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTuningRequest;
 use App\Models\Tuning;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class TuningController extends Controller
@@ -33,9 +35,15 @@ class TuningController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTuningRequest $request)
     {
-        //
+        Tuning::create([
+            'scheduled_at' => "{$request['date']} {$request['time']['time']}"
+        ]);
+
+        return $request->wantsJson()
+            ? new JsonResponse('', 200)
+            : back()->with('status', 'tuning-created');
     }
 
     /**

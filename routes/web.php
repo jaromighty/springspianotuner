@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TuningController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -30,5 +31,7 @@ Route::get('/dashboard', function () {
 Route::get('/schedule', function () {
     return inertia('Schedule');
 })->middleware(['auth', 'verified'])->name('schedule');
+
+Route::resource('tunings', TuningController::class)->only('store');
 
 require __DIR__.'/auth.php';
