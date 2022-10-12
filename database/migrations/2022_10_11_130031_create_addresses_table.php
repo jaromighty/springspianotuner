@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('zip');
-            $table->unsignedBigInteger('client_id');
+            $table->uuid('client_id');
             $table->timestamps();
 
             $table->foreign('client_id')
