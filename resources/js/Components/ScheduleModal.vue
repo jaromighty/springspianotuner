@@ -14,7 +14,7 @@ defineProps({
 });
 const emit = defineEmits(['close']);
 
-const selected = ref({ scheduled_at: "Select a day and time"});
+const selected = ref({ scheduled_at: "Select a day and time" });
 
 const form = useForm({
     _method: 'PUT',
@@ -30,6 +30,7 @@ const form = useForm({
 
 const success = () => {
     form.reset();
+    selected.value = { scheduled_at: "Select a day and time" };
     emit('close');
 }
 
