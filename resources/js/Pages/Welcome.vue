@@ -9,6 +9,10 @@ import ScheduleModal from '@/Components/ScheduleModal.vue';
 import FAQs from '@/Components/FAQs.vue';
 import Footer from '@/Components/Footer.vue';
 
+defineProps({
+    tunings: Array
+});
+
 const open = ref(false);
 const openModal = () => {
     open.value = true;
@@ -30,5 +34,5 @@ const closeModal = () => {
         <Footer />
     </main>
 
-    <ScheduleModal :open="open" @close="closeModal" />
+    <ScheduleModal :open="open" :tunings="tunings" @close="closeModal" />
 </template>

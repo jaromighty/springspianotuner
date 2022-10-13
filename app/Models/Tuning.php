@@ -17,6 +17,10 @@ class Tuning extends Model
         'client_id'
     ];
 
+    protected $casts = [
+        'scheduled_at' => 'datetime:F jS, Y \a\t g:i A'
+    ];
+
     public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);
@@ -25,5 +29,10 @@ class Tuning extends Model
     public function address(): HasOne
     {
         return $this->hasOne(Address::class);
+    }
+
+    public function scopeAvailable($query)
+    {
+        return $query->where('client_id', null);
     }
 }
