@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('tunings', function (Blueprint $table) {
             $table->id();
-            $table->string('address_id')->nullable();
-            $table->unsignedInteger('client_id')->nullable();
+            $table->uuid('address_id')->nullable();
+            $table->uuid('client_id')->nullable();
             $table->timestamp('scheduled_at');
             $table->timestamps();
         });

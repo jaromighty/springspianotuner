@@ -12,7 +12,7 @@ defineProps({
     open: Boolean,
     tunings: Array
 });
-defineEmits(['close']);
+const emit = defineEmits(['close']);
 
 const selected = ref({ scheduled_at: "Select a day and time"});
 
@@ -28,9 +28,17 @@ const form = useForm({
     tuning_id: 0
 });
 
+const success = () => {
+    form.reset();
+    emit('close');
+}
+
 const submit = () => {
     form.tuning_id = selected.value.id;
-    console.log(form);
+    form.post(route('tunings.update', [form.tuning_id]), {
+        preserveState: true,
+        onSuccess: () => success()
+    });
 }
 </script>
 

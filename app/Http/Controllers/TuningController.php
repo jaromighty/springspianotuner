@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTuningRequest;
+use App\Http\Requests\UpdateTuningRequest;
+use App\Models\Client;
 use App\Models\Tuning;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -85,9 +87,35 @@ class TuningController extends Controller
      * @param  \App\Models\Tuning  $tuning
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tuning $tuning)
+    public function update(UpdateTuningRequest $request, Tuning $tuning)
     {
-        //
+        $client = Client::firstOrCreate([
+            'email' => $request['email']
+        ], [
+            'first_name' => $request['first_name'],
+            'last_name' => $request['last_name']
+        ]);
+
+        $address = $client->addresses()->firstOrCreate([
+            'street' => $request['street']
+        ], [
+            'city' => $request['city'],
+            'state' => $request['state'],
+            'zip' => $request['zip']
+        ]);
+
+        // $tuning->client()->associate($client);
+        // $tuning->address()->associate($address);
+        // $tuning->save();
+
+        $tuning->update([
+            'client_id' => $client->id,
+            'address_id' => $address->id
+        ]);
+
+        return $request->wantsJson()
+            ? new JsonResponse('', 200)
+            : back()->with('status', 'tuning-scheduled');
     }
 
     /**

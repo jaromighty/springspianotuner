@@ -26,9 +26,9 @@ class Tuning extends Model
         return $this->belongsTo(Client::class);
     }
 
-    public function address(): HasOne
+    public function address(): BelongsTo
     {
-        return $this->hasOne(Address::class);
+        return $this->belongsTo(Address::class);
     }
 
     public function scopeAvailable($query)

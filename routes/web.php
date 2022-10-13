@@ -30,6 +30,6 @@ Route::get('/schedule', function () {
     return inertia('Schedule');
 })->middleware(['auth', 'verified'])->name('schedule');
 
-Route::resource('tunings', TuningController::class)->only(['index','store']);
+Route::resource('tunings', TuningController::class)->only(['index','store','update']);
 
 require __DIR__.'/auth.php';
