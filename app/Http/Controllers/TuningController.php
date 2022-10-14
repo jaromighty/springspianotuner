@@ -6,6 +6,7 @@ use App\Http\Requests\StoreTuningRequest;
 use App\Http\Requests\UpdateTuningRequest;
 use App\Models\Client;
 use App\Models\Tuning;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,7 @@ class TuningController extends Controller
     public function index()
     {
         return inertia('Schedule', [
-            'tunings' => Tuning::orderBy('scheduled_at', 'asc')->with(['address','client'])->get()
+            'tunings' => Tuning::orderBy('scheduled_at', 'asc')->where('scheduled_at', '>', Carbon::now())->with(['address','client'])->get()
         ]);
     }
 
