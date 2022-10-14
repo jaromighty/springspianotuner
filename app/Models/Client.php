@@ -19,6 +19,21 @@ class Client extends Model
         'user_id'
     ];
 
+    protected $appends = [
+        'full_name',
+        'initials'
+    ];
+
+    public function getFullNameAttribute(): string
+    {
+        return $this->first_name." ".$this->last_name;
+    }
+
+    public function getInitialsAttribute(): string
+    {
+        return $this->first_name[0].$this->last_name[0];
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

@@ -21,6 +21,15 @@ class Address extends Model
         'client_id'
     ];
 
+    protected $appends = [
+        'full_address'
+    ];
+
+    public function getFullAddressAttribute(): string
+    {
+        return $this->street.", ".$this->city.", ".$this->state." ".$this->zip;
+    }
+
     public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);

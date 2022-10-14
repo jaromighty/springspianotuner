@@ -27,7 +27,7 @@ class TuningController extends Controller
     public function index()
     {
         return inertia('Schedule', [
-            'tunings' => Tuning::orderBy('scheduled_at', 'desc')->get()
+            'tunings' => Tuning::orderBy('scheduled_at', 'asc')->with(['address','client'])->get()
         ]);
     }
 
