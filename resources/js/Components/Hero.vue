@@ -27,7 +27,10 @@ defineEmits(['open']);
                     <h1 class="text-4xl font-bold tracking-tight text-black sm:text-5xl md:text-6xl">Springs Piano Tuner</h1>
                     <p class="mt-3 text-base text-gray-600 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua ad ad non deserunt sunt.</p>
                     <div class="mt-8">
-                        <PrimaryButtonLarge @click="$emit('open')">
+                        <PrimaryButtonLarge @click="$emit('open')" class="hidden lg:inline-flex">
+                            Schedule Tuning
+                        </PrimaryButtonLarge>
+                        <PrimaryButtonLarge as="link" href="#schedule" class="lg:hidden">
                             Schedule Tuning
                         </PrimaryButtonLarge>
                     </div>

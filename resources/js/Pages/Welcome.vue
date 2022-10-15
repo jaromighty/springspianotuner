@@ -7,6 +7,7 @@ import MeetJarom from '@/Components/MeetJarom.vue';
 import ScheduleTuningCTA from '@/Components/ScheduleTuningCTA.vue';
 import ScheduleModal from '@/Components/ScheduleModal.vue';
 import FAQs from '@/Components/FAQs.vue';
+import ScheduleForm from '@/Components/Forms/ScheduleForm.vue';
 import Footer from '@/Components/Footer.vue';
 
 defineProps({
@@ -31,6 +32,7 @@ const closeModal = () => {
         <MeetJarom />
         <ScheduleTuningCTA :open="open" @open="openModal" />
         <FAQs />
+        <ScheduleForm :tunings="tunings" />
         <Footer />
     </main>
 

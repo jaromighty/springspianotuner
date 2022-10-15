@@ -81,26 +81,6 @@ const submit = () => {
                                                     <TextInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required />
                                                     <InputError class="mt-2" :message="form.errors.email" />
                                                 </div>
-                                                <div class="sm:col-span-6">
-                                                    <InputLabel for="street" value="Street Address" />
-                                                    <TextInput id="street" type="text" class="mt-1 block w-full" v-model="form.street" required />
-                                                    <InputError class="mt-2" :message="form.errors.street" />
-                                                </div>
-                                                <div class="sm:col-span-2">
-                                                    <InputLabel for="city" value="City" />
-                                                    <TextInput id="city" type="text" class="mt-1 block w-full" v-model="form.city" required />
-                                                    <InputError class="mt-2" :message="form.errors.city" />
-                                                </div>
-                                                <div class="sm:col-span-2">
-                                                    <InputLabel for="state" value="State" />
-                                                    <TextInput id="state" type="text" class="mt-1 block w-full" v-model="form.state" required />
-                                                    <InputError class="mt-2" :message="form.errors.state" />
-                                                </div>
-                                                <div class="sm:col-span-2">
-                                                    <InputLabel for="zip" value="Postal Code" />
-                                                    <TextInput id="zip" type="text" class="mt-1 block w-full" v-model="form.zip" required />
-                                                    <InputError class="mt-2" :message="form.errors.zip" />
-                                                </div>
                                                 <div class="sm:col-span-6 relative">
                                                     <Listbox as="div" v-model="selected">
                                                         <ListboxLabel class="block text-sm font-medium text-gray-700">Date and Time</ListboxLabel>
@@ -127,6 +107,26 @@ const submit = () => {
                                                             </transition>
                                                         </div>
                                                     </Listbox>
+                                                </div>
+                                                <div class="sm:col-span-6">
+                                                    <InputLabel for="street" value="Street Address" />
+                                                    <TextInput id="street" type="text" class="mt-1 block w-full" v-model="form.street" required />
+                                                    <InputError class="mt-2" :message="form.errors.street" />
+                                                </div>
+                                                <div class="sm:col-span-2">
+                                                    <InputLabel for="city" value="City" />
+                                                    <TextInput id="city" type="text" class="mt-1 block w-full" v-model="form.city" required />
+                                                    <InputError class="mt-2" :message="form.errors.city" />
+                                                </div>
+                                                <div class="sm:col-span-2">
+                                                    <InputLabel for="state" value="State" />
+                                                    <TextInput id="state" type="text" class="mt-1 block w-full" v-model="form.state" required />
+                                                    <InputError class="mt-2" :message="form.errors.state" />
+                                                </div>
+                                                <div class="sm:col-span-2">
+                                                    <InputLabel for="zip" value="Postal Code" />
+                                                    <TextInput id="zip" type="text" class="mt-1 block w-full" v-model="form.zip" required />
+                                                    <InputError class="mt-2" :message="form.errors.zip" />
                                                 </div>
                                             </div>
                                         </div>

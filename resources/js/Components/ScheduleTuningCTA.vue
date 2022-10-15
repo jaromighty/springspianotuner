@@ -16,7 +16,10 @@ defineEmits(['open']);
             </h2>
             <div class="mt-8 flex justify-center">
                 <div class="inline-flex rounded-md shadow">
-                    <PrimaryButton @click="$emit('open')">
+                    <PrimaryButton @click="$emit('open')" class="hidden lg:inline-flex">
+                        Schedule Tuning
+                    </PrimaryButton>
+                    <PrimaryButton as="link" href="#schedule" class="lg:hidden">
                         Schedule Tuning
                     </PrimaryButton>
                 </div>
