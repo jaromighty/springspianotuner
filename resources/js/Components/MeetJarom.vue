@@ -5,7 +5,7 @@ const imageUrl = new URL('../../jarom-piano.JPG', import.meta.url).href;
 <template>
     <div id="about" className="mt-12 md:mt-24 mb-8 overflow-hidden">
         <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto text-base grid lg:grid-cols-2 lg:gap-16 lg:items-center lg:max-w-none">
+            <div className="mx-auto text-base grid md:grid-cols-2 md:gap-16 md:items-center md:max-w-none">
                 <div className="relative col-span-1 order-2 mt-8 md:mt-0 md:order-1">
                     <div className="relative text-base mx-auto max-w-prose lg:max-w-none">
                         <figure>
