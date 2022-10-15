@@ -26,7 +26,7 @@ const closeModal = () => {
     <Head title="Welcome" />
     
     <Header :open="open" @open="openModal" />
-    <main class="relative mb-8">
+    <main class="relative mb-8 overflow-x-hidden">
         <Hero :open="open" @open="openModal" />
         <MeetJarom />
         <ScheduleTuningCTA :open="open" @open="openModal" />
