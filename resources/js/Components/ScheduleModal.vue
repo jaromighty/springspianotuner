@@ -1,5 +1,5 @@
 <script setup>
-import { computed, inject, ref } from 'vue';
+import { ref } from 'vue';
 import { Dialog, DialogPanel, DialogTitle, Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions, TransitionChild, TransitionRoot } from '@headlessui/vue';
 import { CheckIcon, ChevronUpDownIcon, XMarkIcon } from '@heroicons/vue/20/solid';
 import { useForm } from '@inertiajs/inertia-vue3';
@@ -101,7 +101,7 @@ const submit = () => {
                                                     <TextInput id="zip" type="text" class="mt-1 block w-full" v-model="form.zip" required />
                                                     <InputError class="mt-2" :message="form.errors.zip" />
                                                 </div>
-                                                <div class="sm:col-span-6">
+                                                <div class="sm:col-span-6 relative">
                                                     <Listbox as="div" v-model="selected">
                                                         <ListboxLabel class="block text-sm font-medium text-gray-700">Date and Time</ListboxLabel>
                                                         <div class="relative mt-1">
@@ -113,7 +113,7 @@ const submit = () => {
                                                             </ListboxButton>
 
                                                             <transition leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
-                                                                <ListboxOptions class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                                                                <ListboxOptions class="absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                                                                     <ListboxOption as="template" v-for="tuning in tunings" :key="tuning.id" :value="tuning" v-slot="{ active, selected }">
                                                                         <li :class="[active ? 'text-white bg-blue-600' : 'text-gray-900', 'relative cursor-default select-none py-2 pl-3 pr-9']">
                                                                             <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']">{{ tuning.scheduled_at }}</span>

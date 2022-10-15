@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TuningController;
 use App\Models\Tuning;
+use Carbon\Carbon;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -19,7 +20,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
-        'tunings' => Tuning::available()->get()
+        'tunings' => Tuning::orderBy('scheduled_at', 'asc')->where('scheduled_at', '>', Carbon::now())->available()->get()
     ]);
 });
 

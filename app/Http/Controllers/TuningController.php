@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTuningRequest;
 use App\Http\Requests\UpdateTuningRequest;
+use App\Mail\TuningConfirmed;
 use App\Models\Client;
 use App\Models\Tuning;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class TuningController extends Controller
 {
@@ -105,18 +107,16 @@ class TuningController extends Controller
             'zip' => $request['zip']
         ]);
 
-        // $tuning->client()->associate($client);
-        // $tuning->address()->associate($address);
-        // $tuning->save();
-
         $tuning->update([
             'client_id' => $client->id,
             'address_id' => $address->id
         ]);
 
+        Mail::to($client->email)->send(new TuningConfirmed($tuning));
+
         return $request->wantsJson()
             ? new JsonResponse('', 200)
-            : back()->with('status', 'tuning-scheduled');
+            : back()->with('status', 'tuning-confirmed');
     }
 
     /**
